@@ -9,7 +9,7 @@ entity ControlUnit is
 		dw_sel		: out std_logic;--habilita cual dato se enviara a escribir 		//MemtoReg
 		dm_wr		: out std_logic;--habilita la escritura en memoria 			//MemWrite
 		ALUOperation	: out std_logic_vector(3 downto 0);--operacion a realizar en la ALU 	//ALUOp
-		alu_src_b	: out std_logic;--habilita el Rt o el Inm_extendido 			//ALUSrc
+		alu_src_b	: out std_logic;--habilita el Rt o el Inm_extendido 			//alu_src_b
 		rw_sel		: out std_logic_vector(1 downto 0);--habilita en cual registro se va a escribir //RegDst
 		Branch		: out std_logic;--
 		Jump		: out std_logic;
@@ -28,7 +28,7 @@ begin
 		when "000000" =>
 			rf_wr		<= '1';	--siempre habilitamos la escritura para un registro en los Tipo R
 			rw_sel		<= "01";--seleccionamos el registro en el multiplexor
-			ALUSrc		<= '0'; --seleccionamos el dato que esta en Rt
+			alu_src_b	<= '0'; --seleccionamos el dato que esta en Rt
 			dm_wr		<= '0'; --no se va a escribir en memoria
 			dw_sel		<= '0'; --se toma el resultado de la ALU (0) (1 para el resultado de la Memoria)
 			Jump		<= '0'; --
@@ -55,7 +55,7 @@ begin
 		when "100011" =>
 			rf_wr		<= '1';
 			rw_sel		<= "00";
-			ALUSrc		<= '1';
+			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '0';
 			dw_sel		<= '1';
@@ -66,8 +66,7 @@ begin
 		when "101011" =>
 			rf_wr		<= '0';
 			rw_sel		<= "00";
-
-			ALUSrc		<= '1';
+			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '1';
 			dw_sel		<= '0';
@@ -78,7 +77,7 @@ begin
 		when "001000" =>
 			rf_wr		<= '1';
 			rw_sel		<= "00";
-			ALUSrc		<= '1';
+			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '0';
 			dw_sel		<= '0';
@@ -89,7 +88,7 @@ begin
 		when "000010" =>
 			rf_wr		<= '0';
 			rw_sel		<= "00"; 
-			ALUSrc		<= '0'; 
+			alu_src_b	<= '0'; 
 			Branch 		<= '0'; 
 			dm_wr		<= '0'; 
 			dw_sel		<= '0';	
@@ -100,7 +99,7 @@ begin
 		when "000011" =>
 			rf_wr		<= '1';
 			rw_sel		<= "10"; 
-			ALUSrc		<= '0';
+			alu_src_b	<= '0';
 			Branch 		<= '0';
 			dm_wr		<= '0';
 			dw_sel		<= '0';
@@ -110,7 +109,7 @@ begin
 		when "000100" =>
 			rf_wr		<= '0';
 			rw_sel		<= "00";
-			ALUSrc		<= '0';
+			alu_src_b	<= '0';
 			Branch 		<= '1';
 			dm_wr		<= '0';
 			dw_sel		<= '0';
@@ -121,7 +120,7 @@ begin
 		when "000101" =>
 			rf_wr		<= '0';
 			rw_sel		<= "00";
-			ALUSrc		<= '0';
+			alu_src_b	<= '0';
 			Branch 		<= '1';
 			dm_wr		<= '0';
 			dw_sel		<= '0';
