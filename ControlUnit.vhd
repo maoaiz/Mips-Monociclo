@@ -17,7 +17,7 @@ entity ControlUnit is
 	);
 end ControlUnit;
 
-architecture CU_arc of ControlUnit is 
+architecture ControlUnit_arc of ControlUnit is 
 
 begin
 
@@ -65,7 +65,7 @@ begin
 		-- sw
 		when "101011" =>
 			rf_wr		<= '0';
-			rw_sel		<= "00";rigin master s
+			rw_sel		<= "00";
 
 			ALUSrc		<= '1';
 			Branch 		<= '0';
