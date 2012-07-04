@@ -1,7 +1,7 @@
 library ieee; 
 use ieee.std_logic_1164.all;
 
-entity CU is
+entity ControlUnit is
 	port(
 		Op		: in std_logic_vector(5 downto 0);
 		Funct		: in std_logic_vector(5 downto 0);
@@ -15,9 +15,9 @@ entity CU is
 		Jump		: out std_logic;
 		Jal		: out std_logic
 	);
-end CU;
+end ControlUnit;
 
-architecture CU_arc of CU is 
+architecture CU_arc of ControlUnit is 
 
 begin
 
@@ -65,7 +65,8 @@ begin
 		-- sw
 		when "101011" =>
 			rf_wr		<= '0';
-			rw_sel		<= "00";
+			rw_sel		<= "00";rigin master s
+
 			ALUSrc		<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '1';
