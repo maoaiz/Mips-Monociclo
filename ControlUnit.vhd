@@ -48,7 +48,6 @@ begin
 				
 				when others => null;-- para el resto
 			end case;
-		3
 		-- lw
 		when "100011" =>
 			rf_wr		<= '1';
