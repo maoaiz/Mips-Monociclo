@@ -8,7 +8,7 @@ entity ControlUnit is
 		rf_wr		: out std_logic;--habilita la escritura en un registro			//RegWrite
 		dw_sel		: out std_logic;--habilita cual dato se enviara a escribir 		//MemtoReg
 		dm_wr		: out std_logic;--habilita la escritura en memoria 			//MemWrite
-		ALUOperation	: out std_logic_vector(3 downto 0);--operacion a realizar en la ALU 	//ALUOp
+		ALUOperation	: out std_logic_vector(2 downto 0);--operacion a realizar en la ALU 	//ALUOp
 		alu_src_b	: out std_logic;--habilita el Rt o el Inm_extendido 			//alu_src_b
 		rw_sel		: out std_logic_vector(1 downto 0);--habilita en cual registro se va a escribir //RegDst
 		Branch		: out std_logic;--
@@ -39,8 +39,6 @@ begin
 				when "100000"=>	ALUOperation <= "000";-- add
 				
 				when "100010"=>	ALUOperation <= "001";-- sub
-
-				when "100010"=>	ALUOperation <= "010";-- beq
 				
 				when "100100"=>	ALUOperation <= "011";-- and
 				
@@ -50,7 +48,7 @@ begin
 				
 				when others => null;-- para el resto
 			end case;
-		
+		3
 		-- lw
 		when "100011" =>
 			rf_wr		<= '1';
@@ -61,7 +59,7 @@ begin
 			dw_sel		<= '1';
 			Jump		<= '0';
 			Jal		<= '0';
-			ALUOperation 	<= "0010"; 
+			ALUOperation 	<= "010"; 
 		-- sw
 		when "101011" =>
 			rf_wr		<= '0';
@@ -72,7 +70,7 @@ begin
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
-			ALUOperation 	<= "0010"; 
+			ALUOperation 	<= "010"; 
 		-- addi
 		when "001000" =>
 			rf_wr		<= '1';
@@ -83,7 +81,7 @@ begin
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
-			ALUOperation 	<= "0010"; 
+			ALUOperation 	<= "010"; 
 		-- j
 		when "000010" =>
 			rf_wr		<= '0';
@@ -94,7 +92,7 @@ begin
 			dw_sel		<= '0';	
 			Jump		<= '1';
 			Jal		<= '0';
-			ALUOperation 	<= "0010"; 
+			ALUOperation 	<= "010"; 
 		-- jal
 		when "000011" =>
 			rf_wr		<= '1';
@@ -115,7 +113,7 @@ begin
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
-			ALUOperation 	<= "0110";
+			ALUOperation 	<= "101";
 		-- bnq
 		when "000101" =>
 			rf_wr		<= '0';
@@ -126,7 +124,7 @@ begin
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
-			ALUOperation 	<= "0110";
+			ALUOperation 	<= "110";
 		
 		when others => null;
 
