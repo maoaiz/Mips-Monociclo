@@ -15,7 +15,7 @@ begin
   begin
 	case dw_sel is
 		when '0'	=> dw <= (ALU_result);
-		when '1'	=> dw <= ra;
+		when '1'	=> dw <= rd;
 		when others	=> dw <= (others => '0');		
 	end case;
   end process;
