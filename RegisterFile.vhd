@@ -15,7 +15,7 @@ entity RegisterFile is
            DL1 : out  STD_LOGIC_VECTOR (31 downto 0);
            DL2 : out  STD_LOGIC_VECTOR (31 downto 0));
 			  
-end registros;
+end RegisterFile;
 
 architecture Behavioral of RegisterFile is
 
