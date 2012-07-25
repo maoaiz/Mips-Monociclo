@@ -14,9 +14,9 @@ begin
   process(alu_src_b,DL2,inm_ext)
   begin
 	case alu_src_b is
-		when '0'	=> rw <= (DL2);
-		when '1'	=> rw <= inm_ext;
-		when others	=> rw <= (others => '0');		
+		when '0'	=> dw <= (DL2);
+		when '1'	=> dw <= inm_ext;
+		when others	=> dw <= (others => '0');		
 	end case;
   end process;
 end Behavioral;
