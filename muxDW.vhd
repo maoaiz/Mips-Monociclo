@@ -4,8 +4,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity muxDW is
     Port ( rd 		: in  STD_LOGIC_VECTOR (31 downto 0);
            ALU_result 	: in  STD_LOGIC_VECTOR (31 downto 0);
-           dw_sel 	: in STD_LOGIC;
-           dw 		: out  STD_LOGIC_VECTOR (31 downto 0));
+           dw_sel 	: in  STD_LOGIC;
+           dw 		: out STD_LOGIC_VECTOR (31 downto 0));
 end muxDW;
 
 architecture Behavioral of muxDW is
