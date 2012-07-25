@@ -19,12 +19,11 @@ begin
 process(ctrlALU,d1 ,d2)
 begin
 	case ctrlALU is
-      when "000" =>
-         resultadoALU <= d1 + d2;    --SUMA
-			zero <= '0';
-			
-      when "001" =>
-         resultadoALU<= d1 - d2;     --RESTA
+		when "000" =>
+			resultadoALU <= d1 + d2;    --SUMA
+			zero <= '0';	
+		when "001" =>
+			resultadoALU<= d1 - d2;     --RESTA
 			zero <= '0';
 		when "010" =>
 			if d1 - d2 = x"00000000" then --BEQ
@@ -32,15 +31,13 @@ begin
 			else
 				zero <= '0';
 			end if;
-      when "011" =>
-         resultadoALU <= d1 AND d2;  --AND
+		when "011" =>
+			resultadoALU <= d1 AND d2;  --AND
 			zero <= '0';
-			
-      when "100" =>		
-         resultadoALU<= d1 OR d2;  --OR
+		when "100" =>
+			resultadoALU<= d1 OR d2;  --OR
 			zero <= '0';
-			
-      when "101" => --SLT set on less than
+		when "101" => --SLT set on less than
 			if d1<d2 then 
 				resultadoALU<=x"00000001";
 				zero <= '0'; 
