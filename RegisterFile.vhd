@@ -7,7 +7,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity RegisterFile is
 
  Port ( clk : in  STD_LOGIC;
-           reg_escritura : in  STD_LOGIC;
+           reg_escritura : in  STD_LOGIC;--rf_wr
            leer_RF1 : in  STD_LOGIC_VECTOR (4 downto 0);
            leer_RF2 : in  STD_LOGIC_VECTOR (4 downto 0);
            escribir_RD : in  STD_LOGIC_VECTOR (4 downto 0);
