@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: Universidad Tecnologica de Pereira
+-- Engineers: @MaoAiz & Jose Salazar
 -- 
 -- Create Date:    17:40:36 07/25/2012 
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
--- Description: 
+-- Description: Procesador monociclo implementado en VHDL
 --
 -- Dependencies: 
 --
@@ -112,6 +112,7 @@ architecture MonocicloCompleto of Mips_Monociclo is
 		rf_wr : OUT std_logic;
 		dw_sel : OUT std_logic;
 		dm_wr : OUT std_logic;
+		dm_rd : OUT std_logic;
 		ALUOperation : OUT std_logic_vector(2 downto 0);
 		alu_src_b : OUT std_logic;
 		rw_sel : OUT std_logic_vector(1 downto 0);
@@ -145,13 +146,13 @@ signal cu_branch:std_logic;--branch
 signal cu_jump:std_logic;--jump
 signal cu_jal:std_logic;--jal
 signal alu_zero:std_logic;--zero
-signal alu_op:STD_LOGIC_VECTOR (2 downto 0);
+signal alu_op:STD_LOGIC_VECTOR (2 downto 0);--operacion a realizar en la ALU
 signal read_data1:std_logic_vector(31 downto 0);--contenido rs DL1
 signal read_data2:std_logic_vector(31 downto 0);--contenido rt DL2
-signal data_alu2:std_logic_vector(31 downto 0);--
-signal alu_result:std_logic_vector(31 downto 0);--
-signal dm_read_data:std_logic_vector(31 downto 0);--
-signal PC_incremented:std_logic_vector(31 downto 0);--
+signal data_alu2:std_logic_vector(31 downto 0);--segundo parametro que recibe la ALU
+signal alu_result:std_logic_vector(31 downto 0);--resultado de la operacion en la alu
+signal dm_read_data:std_logic_vector(31 downto 0);--dato que sale de la lectura de memoria
+signal PC_incremented:std_logic_vector(31 downto 0);--program conunter + 4
 
 
 ----------------- </SENALES> ---------------
@@ -216,6 +217,7 @@ begin
 		rf_wr => rw_write_selector,
 		dw_sel => dw_selector,
 		dm_wr => dm_write_enable,
+		dm_rd => dm_read_enable,
 		ALUOperation => alu_op,
 		alu_src_b => alu_selector_b,
 		rw_sel => rw_selector,

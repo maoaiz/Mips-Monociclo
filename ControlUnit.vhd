@@ -8,6 +8,7 @@ entity ControlUnit is
 		rf_wr		: out std_logic;--habilita la escritura en un registro			//RegWrite
 		dw_sel		: out std_logic;--habilita cual dato se enviara a escribir 		//MemtoReg
 		dm_wr		: out std_logic;--habilita la escritura en memoria 			//MemWrite
+		dm_rd		: out std_logic;--habilita la lectura en memoria 			//MemRead
 		ALUOperation	: out std_logic_vector(2 downto 0);--operacion a realizar en la ALU 	//ALUOp
 		alu_src_b	: out std_logic;--habilita el Rt o el Inm_extendido 			//alu_src_b
 		rw_sel		: out std_logic_vector(1 downto 0);--habilita en cual registro se va a escribir //RegDst
@@ -30,6 +31,7 @@ begin
 			rw_sel		<= "01";--seleccionamos el registro en el multiplexor
 			alu_src_b	<= '0'; --seleccionamos el dato que esta en Rt
 			dm_wr		<= '0'; --no se va a escribir en memoria
+			dm_rd		<= '0';
 			dw_sel		<= '0'; --se toma el resultado de la ALU (0) (1 para el resultado de la Memoria)
 			Jump		<= '0'; --
 			Jal		<= '0'; --
@@ -55,6 +57,7 @@ begin
 			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '0';
+			dm_rd		<= '1';
 			dw_sel		<= '1';
 			Jump		<= '0';
 			Jal		<= '0';
@@ -66,6 +69,7 @@ begin
 			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '1';
+			dm_rd		<= '0';
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
@@ -77,6 +81,7 @@ begin
 			alu_src_b	<= '1';
 			Branch 		<= '0';
 			dm_wr		<= '0';
+			dm_rd		<= '0';
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
@@ -88,6 +93,7 @@ begin
 			alu_src_b	<= '0'; 
 			Branch 		<= '0'; 
 			dm_wr		<= '0'; 
+			dm_rd		<= '0';
 			dw_sel		<= '0';	
 			Jump		<= '1';
 			Jal		<= '0';
@@ -99,6 +105,7 @@ begin
 			alu_src_b	<= '0';
 			Branch 		<= '0';
 			dm_wr		<= '0';
+			dm_rd		<= '0';
 			dw_sel		<= '0';
 			Jump		<= '1';
 			Jal		<= '1';
@@ -109,6 +116,7 @@ begin
 			alu_src_b	<= '0';
 			Branch 		<= '1';
 			dm_wr		<= '0';
+			dm_rd		<= '0';
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
@@ -120,6 +128,7 @@ begin
 			alu_src_b	<= '0';
 			Branch 		<= '1';
 			dm_wr		<= '0';
+			dm_rd		<= '0';
 			dw_sel		<= '0';
 			Jump		<= '0';
 			Jal		<= '0';
